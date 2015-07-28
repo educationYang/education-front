@@ -1,0 +1,275 @@
+<%@ include file="/common/taglibs.jsp"%>
+<%@ taglib prefix="cms" tagdir="/WEB-INF/tags/catalog"%>
+<%@ taglib prefix="content" tagdir="/WEB-INF/tags/content"%>
+<html>
+	<head>
+		<title>${content.contentTitle} | ${category.categoryName}  </title>
+		<meta name="keywords" content="${not empty content.metaKeyword?content.metaKeyword:content.contentTitle}" />
+		<meta name="description" content="${content.metaDescription}" />
+		
+		<link href="${resPath }/styles/main.css" rel="stylesheet" type="text/css">
+      <!-- Include the awesome icon css -->
+      <link href="${resPath }/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+      <link href="${resPath }/styles/help.css" rel="stylesheet" type="text/css" />
+      <link href="${resPath }/styles/about.css" rel="stylesheet" type="text/css" />
+      <script type="text/javascript">
+	  $(document).ready(function() {
+	  $("a.icon_a").hover(function() {
+			  $(this).children(".icon_width").children(".fa").removeClass("icon_nohover");
+			  $(this).children(".icon_width").children(".fa").addClass("icon_hover");
+		  }, function() {
+			  $(this).children(".icon_width").children(".fa").removeClass("icon_hover");
+			  $(this).children(".icon_width").children(".fa").addClass("icon_nohover");
+		  });
+	  });
+	  </script>
+    <link rel="stylesheet" type="text/css" href="${resPath }/styles/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <script type="text/javascript">
+      $(document).ready(function() {
+      	$('.fancybox').fancybox({
+			padding : 0
+		 });
+      	});
+    </script>
+		
+	</head>
+	
+	<body>
+	
+	<c:if test="${!(content.id == 18 || content.id == 19 || content.id == 27)}">
+		<content tag="heading">
+			<c:forEach items="${category.navigatorCategorys}" var="categoryItem">
+				${categoryItem.categoryName} >
+			</c:forEach>
+			${content.contentTitle}
+		</content>
+	
+	<c:choose>
+		<c:when test="${empty content}">
+			Sorry, the page you're looking for cannot be found.
+			<br /><br />
+			Have questions? Comments? Contact our <a href="${ctxPath}/contactus.html">customer service </a>department about your experience at ${appConfig.store.name} and we will respond to you within 24 hours. 
+		</c:when>
+		<c:otherwise>
+			 <!-- ========== 内容详细页面右侧开始 ========= --> 
+			<div class="news-content">
+				<h1>
+					${content.contentTitle}
+				</h1>
+				${content.contentBody}
+			</div>
+			<div class="blank10"></div>
+			<div align="right">
+				<c:if test="${category.category.categoryCode=='knowledge-base'}">
+				<a href="${category.url}" title="<c:out value="${category.categoryName}"/>"><< Back</a>
+				</c:if>
+			</div>
+			 <!-- ========== 内容详细页面右侧结束 =========  -->
+		</c:otherwise>
+	</c:choose>
+	
+	</c:if>
+	
+	
+	
+	<c:if test="${content.id == 18 || content.id == 19 || content.id == 27}">
+	
+		<div class="maincontent">
+	         
+	         <div class="position-wrap portfolio_item_text">
+	            <a href="${ctxPath }/index.html">首页</a>&nbsp;&gt;&nbsp;
+	            <span class="selected">关于四方街</span>
+	         </div>
+	         
+	         <div class="about_nav">
+	            <ul id="remote_nav_ul">
+	              <li><a id="t1" href="#tab1" title="关于四方街" <c:if test="${content.id==18 }">class="current"</c:if>>关于四方街&middot;</a></li>
+	              <li><a id="t2" href="#tab2" title="联系我们" <c:if test="${content.id==27 }">class="current"</c:if>>联系我们&middot;</a></li>
+	              <li><a id="t3" href="#tab3" title="加入我们" <c:if test="${content.id==19 }">class="current"</c:if>>加入我们</a></li>
+	            </ul>
+	         </div><!--about_nav-->
+	         <div class="about_all" id="tab1">
+	           <div class="about_bg"></div> 
+	           <div class="sec2">
+	             <img src="${resPath }/images/press.png" />
+	           </div>
+	           <div class="top_about">
+	             <div class="about_us">
+	                <p><span class="smalltop">四方街目前由广州名度网络技术有限公司运营</span>
+	                <h1 class="about_slogan">我们是四方街</h1>
+	                <h2 class="about_slogan_down">新锐设计师品牌集成店</h2>
+	                <hr>
+	                <p>
+	                2013年初秋，几个来自香港和回国的年轻设计师，因为有共同的设计理念和梦想，为了给年轻的女性带来多样的设计及特别购物体验，四方街SiFangStreet正式诞生。作为新锐设计师品牌集成店，以集结设计师力量为目的，为有品质追求的爱美族，提供触手可及的轻设计。
+	                <br><br>
+	                四方街名字灵感来源于香港上环，这里汇聚各式小众原创设计；而在中国云南也有个“四方街”，那里大家聚集在一起，天南地北一起梦想碰撞；四方街，东南西北四周来访，欢迎各位爱美族加入进来，一同品鉴设计师产品。
+	                <br><br>
+	                每一位时尚设计师都渴望拥有属于自己的品牌。但现实中有太多无奈，让他们不能如愿。“我们要做的，是要掀起一场'革命'，关于设计与梦想的革命。”四方街SiFangStreet网站运营商名度网络（MINDO）执行董事Kevin认为，四方街不仅仅是为爱美族搜寻更多风格迥异的设计师产品，同时也为设计师品牌进行推广和运作。“成就设计梦想”，这是名度网络（MINDO）的追求。
+	                <br><br>
+	                目前，四方街除了几位创始设计师，已与多位设计师进行全方位合作。今后，四方街将与合作设计师，从鞋类、配饰、服装等不同领域尝试更多可能性探讨，尽力为爱美族提供更多与众不同的原创设计产品。
+	                 <br><br>
+	                 四方街线上互动社区即将上线，线下体验店也在筹备中，希望未来有更多志同道合者参与进来。
+	                 </p>	
+	                </div><!--about_us-->
+	           </div><!--top_about-->
+	         </div><!--about_all-->
+	         <div class="about_all" id="tab2">
+	           <div class="contact_bg"></div> 
+	           <div class="sec2">
+	             <img src="${resPath }/images/fields.png" />
+	           </div>
+	           <div class="contact_us" >
+	            <h1 class="about_slogan">联系四方街</h1>
+	            <h2 class="contact_us_title_down">如果您在购物过程中遇到问题，我们很愿意为您提供帮助。我们的服务时间为：周一至周五 09：00—18:30（节假日除外）</h2>
+	            <hr>
+	            <ul class="list_icon_items">
+	              <li>
+	                <a href="mailto:cs@sifangstreet.com" class="icon_a">
+	                
+	                <div class="icon_width">
+	
+	                   <i class="fa fa-envelope fa-5x icon_nohover"></i>
+	                 </div>
+	                    <p class="secondary">电子邮箱</p>
+	                    <p>
+	                      <span class="pseudo-link">cs@sifangstreet.com</span>
+	                    </p>
+	                </a>
+				  </li>
+	              <li>
+	                <a href="javascript:void(0);" class="icon_a">
+	                <div class="icon_width">
+	                  <i class="fa fa-phone fa-5x icon_nohover"></i>
+	                </div>
+	                  <p class="secondary">客服专线</p>
+	                  <p>
+	                        <span class="pseudo-link" id="Pcode">400-661-5677</span>
+	                    </p>
+	                </a>
+	              </li>
+	             
+	              <li>
+	                <a href="http://weibo.com/sifangstreet" class="icon_a">
+	                <div class="icon_width">
+	                    <i class="fa fa-weibo fa-5x icon_nohover"></i>
+	                </div>
+	                    <p class="secondary">微博</p>
+	                    <p>
+	                        <span class="pseudo-link">关注SiFangStreet四方街</span>
+	                    </p>
+	                </a>
+	
+	              </li>
+	              <li>
+	                <a href="#inline1" class="icon_a fancybox">
+	                <div class="icon_width">
+	                    <i class="fa fa-weixin fa-5x icon_nohover"></i>
+	                    
+	                </div>
+	                
+	                    <p class="secondary">微信</p>
+	                    <p>
+	                        <span class="pseudo-link">搜索sifangstreet四方街或点击打开二维码</span>
+	                    </p>
+	                </a>
+	              </li>
+	              <li>
+	                <a href="http://wpa.qq.com/msgrd?v=3&uin=4006615677&site=qq&menu=yes" class="icon_a" target="_blank">
+	                <div class="icon_width">
+	                    <i class="fa fa-qq fa-5x icon_nohover"></i>
+	                </div>
+	                    <p class="secondary">QQ客服</p>
+	                    <p>
+	                        <span class="pseudo-link">点击可访问QQ客服</span>
+	                    </p>
+	                </a>
+	
+	              </li>
+	               <li>
+	                <a href="javascript:void(0);" class="icon_a">
+	                <div class="icon_width">
+	                    <i class="fa fa-comments-o fa-5x icon_nohover"></i>
+	                </div>
+	                    <p class="secondary">在线客服</p>
+	                    <p>
+	                        <span class="pseudo-link">点击页面右侧侧边栏</span>
+	                    </p>
+	                </a>
+	
+	              </li>
+	            </ul>
+	            
+	            <div class="weixin_QR" id="inline1"></div>
+	            <hr class="grid-2 center">
+	            <h2 class="align_center">欢迎莅临四方街体验店</h2>
+	            <div class="grid-14 center">
+				<div class="map_find_us"></div>
+				
+				<div class="map-lower">
+					<div class="grid-9">
+						<h3>体验店&nbsp;&amp;&nbsp;办公地址</h3>
+	                    <div class="dec">
+	                      <p><i class="fa fa-map-marker fa-2x padding_right15"></i>广州市越秀区东风东路753号天誉大厦东塔3104</p>
+	                      <p><i class="fa fa-university fa-lg padding_right10"></i>广州名度网络技术有限公司</p>
+	                    </div>
+					</div>
+				</div>
+			</div>
+	           </div><!--contact_us-->
+	         </div><!--about_all-->
+	         <div class="about_all" id="tab3">
+	           <div class="joinus_bg"></div> 
+	           <div class="sec2">
+	             <img src="${resPath }/images/shake.png" />
+	           </div>
+	           <div class="join_us">
+	            <h1 class="about_slogan">加入四方街</h1>
+	            <h3 class="join_us_title_down">
+	              四方街SiFangStreet.com由广州名度网络技术有限公司（下称“本公司”或“我们）拥有和运营。
+	              <br/>
+	              “成就设计梦想”是名度网络的使命，为爱美族提供触手可及的设计师轻时尚产品。
+	              <br/>我们需要服务热忱的伙伴提供专业及优质的服务，将四方街SiFangStreet的品牌精神传达给消费者。
+	              <br/>
+	              如果你也喜爱和认同四方街SiFangStreet，请加入我们！
+	            </h3>
+	            <hr>
+	            <div class="down_right">
+	            <h2>会员积分</h2>
+	            <br>
+	            <p class="MsoNormal"><span lang="EN-US">•<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span>在本网站注册、消费即可享受积分礼遇。</span><span lang="EN-US"></span></p>
+	           
+	            <p class="MsoNormal"><span lang="EN-US">•<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span>积分可以累积，有效期为</span><span lang="EN-US">1</span><span>年，每年</span><span lang="EN-US">3</span><span>月</span><span lang="EN-US">31</span><span>日为积分清零日。首个积分清零日为</span><span lang="EN-US">2015</span><span>年</span><span lang="EN-US">3</span><span>月</span><span lang="EN-US">31</span><span>日，清零</span><span lang="EN-US">2014</span><span>年积分，以此类推。</span><span lang="EN-US"></span></p>
+	            <p class="MsoNormal"><span lang="EN-US">•<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span>积分可以在本网站会员之间转让。</span><span lang="EN-US"></span></p>
+	            <p class="MsoNormal"><strong><span lang="EN-US">&nbsp;</span></strong></p>
+	            
+	            <h2>积分标准</h2>
+	            </div><!--down_right-->
+	           </div><!--join_us-->
+	         </div><!--about_all-->
+	         
+	         <script>
+			$(function() {
+				// setup ul.tabs to work as tabs for each div directly under div.panes
+				var index = 0;
+				switch(${content.id}){
+				case 18:
+					index = 0;
+					break;
+				case 19:
+					index = 2;
+					break;
+				case 27:
+					index = 1;
+					break;
+				}
+				$("#remote_nav_ul").tabs("div.about_all", { history: true,initialIndex: index});
+			});
+			</script>
+	           
+	       <hr>
+	      </div><!--end of maincontent-->
+	      
+	</c:if>
+	
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<%@ include file="/common/taglibs.jsp"%>
+<%@ taglib prefix="product" tagdir="/WEB-INF/tags/catalog"%>
+<html>
+	<head>
+<title>我的收藏</title>
+</head>
+<body>
+	<div class="checkout-content">
+		<content tag="heading">我的收藏</content>
+		<h3>我的收藏</h3>
+		<div class="blank10"></div>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table-orders">
+		 		<tr>
+				<th height="33" width="100">
+					<a href="#">商品信息</a>
+				</th>
+				<th>
+					<a href="#" ></a>
+				</th>
+				<th width="200">
+					收藏时间
+				</th>
+				<th>
+					操作
+				</th>	
+		 		</tr>
+			<c:forEach var="favorite" items="${favoriteList}" varStatus="s">
+			<tr>
+				<td>
+					<product:productImg product="${favorite.product}" size="b" width="72" height="72" isLazyload="true"/>
+				</td>
+				<td>
+					<product:productName product="${favorite.product}" />
+				</td>
+				<td>
+					<fmt:formatDate value="${favorite.createTime}" pattern="yyyy-MM-dd" />
+				</td>
+				<td>
+					<a href="javascript:void(0)" onclick="fnRemoveFavorite(${favorite.id});">取消收藏</a>
+				</td>
+			</tr>
+			</c:forEach>
+		</table>
+	</div>
+	<script type="text/javascript">
+		function fnRemoveFavorite(id){
+			if(confirm("确定要取消该商品收藏？")){
+				window.location.href=__ctxPath+"/myaccount/favorite/delete/"+id+".html"
+			}
+		}
+	</script>
+</body>
+</html>
